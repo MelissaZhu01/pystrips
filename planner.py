@@ -109,7 +109,7 @@ class ProgressionPlanning(object):
         ' YOUR CODE HERE '
         opened = list()
         max_step = 10
-        goal_state = self.proble.goal
+        goal_state = self.problem.goal
         initialNode = Node(State(self.problem.init))
         frontier = util.FrontierPriorityQueueWithFunction(lambda searchNode:(searchNode.g + self.W*searchNode.h))
         frontier.push(initialNode)
