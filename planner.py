@@ -111,13 +111,13 @@ class ProgressionPlanning(object):
         max_step = 10
         goal_state = self.problem.goal
         initialNode = Node(State(self.problem.init))
-        frontier = util.PriorityQueueWithFunction(lambda searchNode:(searchNode.g + W*searchNode.h))
+        frontier = util.Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
         frontier.push(initialNode)
         reached = False
         for i in range(max_step):
             sNode = frontier.pop()
             opened.append(sNode.state)
-            if goal_state.intersect(sNode.state) == goal_state:
+            if sNode.state.intersect(goal_state) == goal_state:
                 reached = True
                 num_explored = opened.length
                 break
