@@ -119,7 +119,7 @@ class ProgressionPlanning(object):
             opened.append(sNode.state)
             if sNode.state.intersect(goal_state) == goal_state:
                 reached = True
-                num_explored = opened.length
+                num_explored = len(opened)
                 break
             actionsApplicable = self.applicable(sNode.state)
             for action in actionsApplicable:
