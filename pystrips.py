@@ -8,7 +8,7 @@ from validator  import validate
 
 
 def parse():
-    usage = 'python3 pystrips.py {show, ground, solve} <DOMAIN> <INSTANCE> [OPTIONS]'
+    usage = 'python pystrips.py {show, ground, solve} <DOMAIN> <INSTANCE> [OPTIONS]'
     description = 'PyStrips is a classical planner based on HSP for PDDL/STRIPS language.'
     help_commands = '''
     show PDDL files, ground all actions or solve domain/problem instance.
