@@ -130,7 +130,7 @@ class ProgressionPlanning(object):
                                action,
                                sNode,
                                sNode.g + 1,
-                               heuristics.h_add(stateSon, self)) 
+                               heuristics(stateSon, self)) 
                 frontier.push(nodeSon)
                 num_generated = num_generated+1
             if frontier.is_empty():
