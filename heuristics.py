@@ -22,7 +22,7 @@ def h_add(state, planning):
     change = True
     while change:
        change = False
-       actionsApplicable = planning.applicable(X,actions)
+       actionsApplicable = planning.applicable(X)
        for a in actionsApplicable:
            X = planning.successor(X,a)
            for p in a.pos_effect:
@@ -49,7 +49,7 @@ def h_max(state, planning):
     change = True
     while change:
        change = False
-       actionsApplicable = planning.applicable(X,actions)
+       actionsApplicable = planning.applicable(X)
        for a in actionsApplicable:
            X = planning.successor(X,a)
            for p in a.pos_effect:
