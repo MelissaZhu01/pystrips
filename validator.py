@@ -13,6 +13,7 @@ def validate(problem, solution):
     mainly for debugging purposes.
     '''
     ' YOUR CODE HERE '
-    correct = True
-    return correct
+     util.raiseNotDefined()
+#    correct = True
+#    return correct
     
