@@ -111,7 +111,7 @@ class ProgressionPlanning(object):
         max_step = 10
         goal_state = self.problem.goal
         initialNode = Node(State(self.problem.init))
-        frontier = Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
+        frontier = PriorityQueueWithFunction(lambda searchNode:(searchNode.g + W*searchNode.h))
         frontier.push(initialNode)
         reached = False
         for i in range(max_step):
