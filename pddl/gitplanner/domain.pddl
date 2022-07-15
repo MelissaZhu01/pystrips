@@ -48,7 +48,7 @@
     ;; git checkout -- <old-file>
     (:action git-checkout
         :parameters (?f - file)
-        :precondition (and (not(clean)))
+        :precondition (and (not(clean ?f)))
         :effect (and (clean ?f) (not(modified-in-workspace ?f)) (not(deleted-in-workspace ?f)))
     )
     
