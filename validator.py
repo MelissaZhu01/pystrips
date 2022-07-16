@@ -35,6 +35,7 @@ def validate(problem, solution):
         print("not goal state")
         print(goal_state)
         print(state)
+        print(State(state).intersect(goal_state))
         return False
       
     return True
