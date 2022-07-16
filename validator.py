@@ -14,7 +14,7 @@ def validate(problem, solution):
     '''
     ' YOUR CODE HERE '
     initial_state = problem.init
-    goal_state = problem.goal
+    goal = problem.goal
     
     state = set()
     state = initial_state
@@ -30,11 +30,11 @@ def validate(problem, solution):
             print(i)
             
             
-    if not goal_test(state,goal_state):
+    if not goal_test(state,goal):
         print("not goal state")
-        print(goal_state)
+        print(goal)
         print(state)
-        print(State(state).intersect(goal_state).difference(goal_state))
+        print(State(state).intersect(goal).difference(goal))
         return False
       
     return True
@@ -59,4 +59,4 @@ def successor(state, action):
 def goal_test(state,goal):
     ''' Return true if `state` is a goal state. '''
     ' YOUR CODE HERE '
-    return State(state).intersect(goal_state).difference(goal_state) == []
+    return State(state).intersect(goal).difference(goal) == []
