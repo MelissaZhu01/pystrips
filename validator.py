@@ -16,9 +16,8 @@ def validate(problem, solution):
     initial_state = problem.init
     goal_state = problem.goal
     
-    
+    state = set()
     state = initial_state
-    
     for i in range(len(solution)):
         action = solution[i]
         if not applicable(action, state):
