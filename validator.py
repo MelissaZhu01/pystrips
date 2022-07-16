@@ -28,10 +28,13 @@ def validate(problem, solution):
             
         else:
             state = successor(state, action)
+            print(i)
             
             
     if not goal_test(state,goal_state):
         print("not goal state")
+        print(goal_state)
+        print(state)
         return False
       
     return True
