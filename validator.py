@@ -13,4 +13,5 @@ def validate(problem, solution):
     mainly for debugging purposes.
     '''
     ' YOUR CODE HERE '
-    util.raiseNotDefined()
+    action = solutions.actions
+    return true
