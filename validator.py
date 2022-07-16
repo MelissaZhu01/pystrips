@@ -34,7 +34,7 @@ def validate(problem, solution):
         print(goal)
         print(state)
         print(State(state).intersect(goal).difference(goal))
-        print(State(state).intersect(goal).difference(goal) == [])
+        print(State(state).intersect(goal)==State(state))
         return False
       
     return True
@@ -59,4 +59,4 @@ def successor(state, action):
 def goal_test(state,goal):
     ''' Return true if `state` is a goal state. '''
     ' YOUR CODE HERE '
-    return State(state).intersect(goal)==State(state)
+    return State(state).intersect(goal)==State(goal)
