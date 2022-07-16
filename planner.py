@@ -85,7 +85,7 @@ class ProgressionPlanning(object):
     def goal_test(self, state):
         ''' Return true if `state` is a goal state. '''
         ' YOUR CODE HERE '
-        return State(state).intersect(self.problem.goal) == State(state)
+        return State(state).intersect(self.problem.goal) == State(self.problem.goal)
 
     def solve(self, W, heuristics):
         '''
