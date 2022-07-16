@@ -13,5 +13,5 @@ def validate(problem, solution):
     mainly for debugging purposes.
     '''
     ' YOUR CODE HERE '
-    action = solutions.actions
+    action = solution.actions
     return true
