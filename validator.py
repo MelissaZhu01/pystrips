@@ -27,13 +27,13 @@ def validate(problem, solution):
             
         else:
             state = successor(state, action)
-            print(i)
             
             
     if not goal_test(state,goal):
         print("not goal state")
         print(goal)
         print(state)
+        print(State(state).intersect(goal).difference(goal))
         print(State(state).intersect(goal).difference(goal) == [])
         return False
       
