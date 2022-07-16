@@ -59,4 +59,4 @@ def successor(state, action):
 def goal_test(state,goal):
     ''' Return true if `state` is a goal state. '''
     ' YOUR CODE HERE '
-    return State(state).intersect(goal).difference(goal) == []
+    return State(state).intersect(goal)==State(state)
