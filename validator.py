@@ -22,6 +22,8 @@ def validate(problem, solution):
     for i in range(len(solution)):
         action = solution[i]
         if not applicable(action, state):
+            print("not applicable")
+            print(i)
             return False
             
         else:
@@ -29,6 +31,7 @@ def validate(problem, solution):
             
             
     if not goal_test(state,goal_state):
+        print("not goal state")
         return False
       
     return True
