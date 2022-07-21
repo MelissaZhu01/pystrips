@@ -117,7 +117,7 @@ class ProgressionPlanning(object):
         for i in range(max_step):
             sNode = frontier.pop()
             opened.append(sNode.state)
-            if sNode.state.intersect(goal_state) == goal_state:
+            if self.goal_test(sNode.state):
                 reached = True
                 num_explored = len(opened)
                 break
