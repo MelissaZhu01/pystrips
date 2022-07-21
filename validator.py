@@ -31,10 +31,12 @@ def validate(problem, solution):
             
     if not goal_test(state,goal):
         print("not goal state")
-        print(goal)
-        print(state)
-        print(State(state).intersect(goal).difference(goal))
-        print(State(state).intersect(goal)==State(state))
+        print("goal: "+goal)
+        print("Estado final: "+state)
+        print("stado insterseccao goal: "+State(state).intersect(goal))
+        print("diferenca stado insterseccao goal com goal: "+State(state).intersect(goal).difference(goal))
+        print("intersecção stado goal = stado: "+State(state).intersect(goal)==State(state))
+        print("intersecção stado goal = goal: "+State(state).intersect(goal)==State(goal))
         return False
       
     return True
