@@ -114,7 +114,7 @@ class ProgressionPlanning(object):
         frontier = Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
         frontier.push(initialNode)
         reached = False
-        for i in range(max_step):
+        while reached == False:
             sNode = frontier.pop()
             opened.append(sNode.state)
             if self.goal_test(sNode.state):
