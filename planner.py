@@ -115,7 +115,8 @@ class ProgressionPlanning(object):
         frontier.push(initialNode)
         reached = False
         while not frontier.is_empty():
-            print("frontier: " + frontier)
+            print("frontier: ")
+            print(frontier)
             sNode = frontier.pop()
             opened.append(sNode.state)
             if self.goal_test(sNode.state):
