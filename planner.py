@@ -114,12 +114,13 @@ class ProgressionPlanning(object):
         frontier = Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
         frontier.push(initialNode)
         reached = False
-        while reached == False:
+        while not frontier.is_empty:
             sNode = frontier.pop()
             opened.append(sNode.state)
             if self.goal_test(sNode.state):
                 reached = True
                 num_explored = len(opened)
+                plan = sNode.path() 
                 break
             actionsApplicable = self.applicable(sNode.state)
             for action in actionsApplicable:
@@ -136,7 +137,8 @@ class ProgressionPlanning(object):
             if frontier.is_empty():
                 print ('Problem does not have a solution')
                 return None
-        plan = sNode.path() 
+        print("Solution is: ")
+        print(plan)
         return (plan, num_explored, num_generated)
         
         
