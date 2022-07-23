@@ -121,9 +121,6 @@ class ProgressionPlanning(object):
                 reached = True
                 num_explored = len(opened)
                 plan = sNode.path() 
-                print("Solution is: ")
-                print(plan)
-                return (plan, num_explored, num_generated)
                 break
             actionsApplicable = self.applicable(sNode.state)
             for action in actionsApplicable:
@@ -140,6 +137,9 @@ class ProgressionPlanning(object):
             if frontier.is_empty():
                 print ('Problem does not have a solution')
                 return None
-
+        if reached == True:
+            print("Solution is: ")
+            print(plan)
+        return (plan, num_explored, num_generated)
         
         
