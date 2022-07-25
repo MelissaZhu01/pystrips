@@ -108,7 +108,7 @@ class ProgressionPlanning(object):
         num_generated = 0
         ' YOUR CODE HERE '
 
-        init_state = self.problem.init
+        init_state = frozenset(self.problem.init)
         goal_state = self.problem.goal
         frontier = Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
         initialNode = Node(State(init_state))
