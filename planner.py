@@ -108,45 +108,41 @@ class ProgressionPlanning(object):
         num_generated = 0
         ' YOUR CODE HERE '
         opened = list()
-        max_step = 10
         goal_state = self.problem.goal
-        initialNode = Node(State(self.problem.init))
         frontier = Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
+        initialNode = Node(State(self.problem.init,g=0,h=heuristics(self.problem.init,self)))
         frontier.push(initialNode)
-        reached = False
-        i = 0
-        while reached == False:
-            i=i+1
-            print(i)
-            
-            print("Antes:")
-            print(frontier)
-
-                
+        
+        num_generated = 1
+        cost = {self.problem.init: 0}
+        
+        while not frontier.is_empty():
             sNode = frontier.pop()
-            print("depois:")
-            print(frontier)
-            opened.append(sNode.state)
+            num_explored = num_explored+1
+            
             if self.goal_test(sNode.state):
-                reached = True
-                num_explored = len(opened)
                 plan = sNode.path() 
-                break
+                return (plan, num_explored, num_generated)
+                
             actionsApplicable = self.applicable(sNode.state)
             for action in actionsApplicable:
                 stateSon = self.successor(sNode.state, action)
-                if stateSon in opened:
+                num_generated = num_generated+1
+                
+                if stateSon in cost and cost[stateSon] <= sNode.g+1:
+                    # Se ele já foi aberto ou se o custo for maior que antes
+                    # pula esse estado e vai para o próximo
                     continue
+                
+                cost[stateSon] = sNode.g+1
                 nodeSon = Node(stateSon,
                                action,
                                sNode,
-                               sNode.g + 1,
+                               cost[stateSon],
                                heuristics(stateSon, self)) 
                 frontier.push(nodeSon)
-                num_generated = num_generated+1
-            if frontier.is_empty():
-                print ('Problem does not have a solution')
-                return None
-        return (plan, num_explored, num_generated)
+                
+        print ('Problem does not have a solution')
+        return None
         
         
