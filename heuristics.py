@@ -13,6 +13,7 @@ def h_add(state, planning):
     to access the applicable actions and problem information.
     '''
     ' YOUR CODE HERE '
+    '''
     import sys
     h = dict() 
     actions = planning.actions
@@ -31,6 +32,7 @@ def h_add(state, planning):
                if prev != h[p]:
                    change = True
     return h
+'''
 
 
 def h_max(state, planning):
@@ -39,6 +41,7 @@ def h_max(state, planning):
 
     OBSERVATION: It receives `planning` object in order
     to access the applicable actions and problem information.
+    '''
     '''
     import sys
     h = dict() 
@@ -58,6 +61,7 @@ def h_max(state, planning):
                if prev != h[p]:
                    change = True
     return sum(h.get(i,sys.maxsize) for i in planning.problem.goal)
+'''
     ' YOUR CODE HERE '
 
 
