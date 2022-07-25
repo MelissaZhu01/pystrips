@@ -118,7 +118,10 @@ class ProgressionPlanning(object):
         while reached == False:
             print("Antes:")
             print(frontier)
-            
+            print("node")
+            frontiertemp = frontier
+            tempnode = frontiertemp._queue.pop()
+            print(tempnode.state)
             sNode = frontier.pop()
             print("depois:")
             print(frontier)
