@@ -116,11 +116,12 @@ class ProgressionPlanning(object):
         reached = False
         i = 0
         while reached == False:
-            i=i+1
-            print(i)
-            if i == 59:
-                print(frontier)
+            print("Antes:")
+            print(frontier)
+            
             sNode = frontier.pop()
+            print("depois:")
+            print(frontier)
             opened.append(sNode.state)
             if self.goal_test(sNode.state):
                 reached = True
