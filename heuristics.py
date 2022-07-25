@@ -57,7 +57,7 @@ def h_max(state, planning):
                h[p] = min(prev,(1+sum(h.get(pre, sys.maxsize) for pre in a.precond)))
                if prev != h[p]:
                    change = True
-    return max(h,key = h.get)
+    return h[max(h,key = h.get)]
     ' YOUR CODE HERE '
 
 
