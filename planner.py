@@ -115,8 +115,8 @@ class ProgressionPlanning(object):
         frontier.push(initialNode)
         
         num_generated = 1
-        cost = dict()
-        cost = {init_state: 0}
+        cost = dict([(init_state,0)])
+
         
         while not frontier.is_empty():
             sNode = frontier.pop()
