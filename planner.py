@@ -118,19 +118,14 @@ class ProgressionPlanning(object):
         while reached == False:
             i=i+1
             print(i)
-            if i == 59 or i == 62:
-                print("Antes:")
-                print(frontier)
             
-                print("node")
-                frontiertemp = frontier
-                tempnode = frontiertemp._queue.pop()
-                print(tempnode.state)
+            print("Antes:")
+            print(frontier)
+
                 
             sNode = frontier.pop()
-            if i == 59 or i == 62:
-                print("depois:")
-                print(frontier)
+            print("depois:")
+            print(frontier)
             opened.append(sNode.state)
             if self.goal_test(sNode.state):
                 reached = True
