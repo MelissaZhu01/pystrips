@@ -143,6 +143,7 @@ class ProgressionPlanning(object):
                                cost[stateSon],
                                heuristics(stateSon, self)) 
                 frontier.push(nodeSon)
+                print(nodeSon.g + W*nodeSon.h)
                 
         print ('Problem does not have a solution')
         return None
