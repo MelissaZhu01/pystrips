@@ -120,7 +120,7 @@ class ProgressionPlanning(object):
             print(i)
             print("Antes:")
             print(frontier)
-            if i == 59:
+            if i == 62:
                 print("node")
                 frontiertemp = frontier
                 tempnode = frontiertemp._queue.pop()
