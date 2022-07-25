@@ -57,7 +57,7 @@ def h_max(state, planning):
                h[p] = min(prev,(1+sum(h.get(pre, sys.maxsize) for pre in a.precond)))
                if prev != h[p]:
                    change = True
-    return sum(h.get(i,sys.maxsize) for i in planning.problem.goal)
+    return sum(h.get(i,sys.maxsize).values() for i in planning.problem.goal)
     ' YOUR CODE HERE '
 
 
