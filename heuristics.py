@@ -21,15 +21,15 @@ def h_add(state, planning):
         h[x] = 0
     change = True
     while change:
-       change = False
+       
        actionsApplicable = planning.applicable(X)
        for a in actionsApplicable:
            X = planning.successor(X,a)
            for p in a.pos_effect:
                prev = h.get(p,sys.maxsize)
                h[p] = min(prev,(1+sum(h.get(pre, sys.maxsize) for pre in a.precond)))
-               if prev != h[p]:
-                   change = True
+               if prev == h[p]:
+                   change = False
     return h
 
 

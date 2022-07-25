@@ -110,7 +110,7 @@ class ProgressionPlanning(object):
 
         init_state = frozenset(self.problem.init)
         goal_state = self.problem.goal
-        frontier = Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
+        frontier = Frontier(lambda searchNode: searchNode.g + W*searchNode.h)
         initialNode = Node(State(init_state))
         frontier.push(initialNode)
         
