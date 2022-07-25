@@ -108,13 +108,14 @@ class ProgressionPlanning(object):
         num_generated = 0
         ' YOUR CODE HERE '
         opened = list()
+        init_state = self.problem.init
         goal_state = self.problem.goal
         frontier = Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
-        initialNode = Node(State(self.problem.init))
+        initialNode = Node(State(init_state))
         frontier.push(initialNode)
         
         num_generated = 1
-        cost = {self.problem.init: 0}
+        cost = {init_state: 0}
         
         while not frontier.is_empty():
             sNode = frontier.pop()
