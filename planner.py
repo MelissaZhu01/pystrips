@@ -131,7 +131,7 @@ class ProgressionPlanning(object):
                 stateSon = self.successor(sNode.state, action)
                 num_generated = num_generated+1
                 
-                if stateSon in cost and cost[stateSon] <= sNode.g+1:
+                if stateSon in cost and cost[stateSon] <= sNode.g+1+ W*sNode.h:
                     # Se ele já foi aberto ou se o custo for maior que antes
                     # pula esse estado e vai para o próximo
                     continue
@@ -143,7 +143,6 @@ class ProgressionPlanning(object):
                                cost[stateSon],
                                heuristics(stateSon, self)) 
                 frontier.push(nodeSon)
-                print(nodeSon.g + W*nodeSon.h)
                 
         print ('Problem does not have a solution')
         return None
