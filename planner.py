@@ -110,7 +110,7 @@ class ProgressionPlanning(object):
         opened = list()
         goal_state = self.problem.goal
         frontier = Frontier(lambda searchNode:(searchNode.g + W*searchNode.h))
-        initialNode = Node(State(self.problem.init,g=0,h=heuristics(self.problem.init,self)))
+        initialNode = Node(State(self.problem.init))
         frontier.push(initialNode)
         
         num_generated = 1
