@@ -68,5 +68,42 @@ def h_ff(state, planning):
     OBSERVATION: It receives `planning` object in order
     to access the applicable actions and problem information.
     '''
-    util.raiseNotDefined()
+    graphplan = dict() #graphplan relaxed
+    actions = planning.actions
+    X = state
+    goal = planning.problem.goal
+    isGoal = False
+    if X.intersect(goal) == goal: #ja estamos na meta entao o comprimento (a quantidade) de acoes necessaria eh zero
+        return 0
+    level = 0
+    graphplan[(level,'state')] = X
+    # expandir graphplan
+    while not isGoal:
+        actionsApplicable = planning.applicable(X,actions)
+        level += 1
+        for a in actionsApplicable:
+            X = planning.successorRelaxed(X,a) 
+            if X.intersect(goal) == goal:
+                isGoal = True
+                break
+        graphplan[(level,'state')] = X
+        graphplan[(level,'action')] = actionsApplicable
+    #busca regressiva - procurando caminho para estado inicial até estado final
+    thisLevelGoals = set()
+    thisLevelGoals = thisLevelGoals.union(goal)
+    relaxedActions = set()
+    while (level > 0):
+        prevLevelGoals = set()
+        for tg in thisLevelGoals:
+            if tg in graphplan[level-1,'state']:
+                prevLevelGoals.add(tg)
+            else:
+                for a in graphplan[level,'action']:
+                    if tg in a.pos_effect:
+                        prevLevelGoals = prevLevelGoals.union(a.precond)
+                        relaxedActions.add(a)
+                        break 
+        level -= 1
+        thisLevelGoals = prevLevelGoals.copy()
+    return len(relaxedActions)
     ' YOUR CODE HERE '
