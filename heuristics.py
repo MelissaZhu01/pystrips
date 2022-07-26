@@ -32,8 +32,6 @@ def h_add(state, planning):
                if prev != h[p]:
                    change = True
     
-        
-    
     return sum(h.get(i,sys.maxsize) for i in planning.problem.goal)
 
 
@@ -55,7 +53,7 @@ def h_max(state, planning):
        change = False
        actionsApplicable = planning.applicable(X)
        for a in actionsApplicable:
-           X = planning.successor(X,a)
+           X = X.union(a.pos_effect)
            for p in a.pos_effect:
                prev = h.get(p,sys.maxsize)
                h[p] = min(prev,(1+sum(h.get(pre, sys.maxsize) for pre in a.precond)))
