@@ -22,13 +22,15 @@ def h_add(state, planning):
     
     pre_P = state
     ApplicableActions = planning.applicable(pre_P)
-    cost += 1
-    pos_P = pre_P.union(ApplicableActions.pos_effect)
+    for action in ApplicableActions:
+        pos_P = pre_P.union(action.pos_effect)
+        cost += 1
     while pre_P.intersection(pos_P) == pos_P and pos_P.intersection(goal) == goal:
         pre_P = pos_P
         ApplicableActions = planning.applicable(pre_P)
-        cost += 1
-        pos_P = pre_P.union(ApplicableActions.pos_effect)
+        for action in ApplicableActions:
+            pos_P = pre_P.union(action.pos_effect)
+            cost += 1
 
     return cost
     
