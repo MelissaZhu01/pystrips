@@ -16,7 +16,6 @@ def h_add(state, planning):
     
     import sys
     h = dict() 
-    actions = planning.actions
     X = state
     for x in X:
         h[x] = 0
@@ -28,7 +27,7 @@ def h_add(state, planning):
            X = X.union(a.pos_effect)
            for p in a.pos_effect:
                prev = h.get(p,sys.maxsize)
-               h[p] = min(prev,(1+sum(h.get(pre, sys.maxsize) for pre in a.precond)))
+               h[p] = min(prev,(1+sum(h.get(q, sys.maxsize) for q in a.precond)))
                if prev != h[p]:
                    change = True
     
@@ -56,10 +55,10 @@ def h_max(state, planning):
            X = X.union(a.pos_effect)
            for p in a.pos_effect:
                prev = h.get(p,sys.maxsize)
-               h[p] = min(prev,(1+sum(h.get(pre, sys.maxsize) for pre in a.precond)))
+               h[p] = min(prev,(1+max(h.get(pre, sys.maxsize) for pre in a.precond)))
                if prev != h[p]:
                    change = True
-    return h[max(h,key = h.get)]
+    return max(h.get(i,sys.maxsize) for i in planning.problem.goal)
     ' YOUR CODE HERE '
 
 
